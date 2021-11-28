@@ -80218,7 +80218,7 @@ Phaser.Physics.prototype = {
             }
             else
             {
-                this.box2d.reset();
+                this.box2d.clear();
             }
         }
         else if (system === Phaser.Physics.MATTERJS)
@@ -80412,7 +80412,7 @@ Phaser.Physics.prototype = {
 
         if (this.box2d)
         {
-            this.box2d.reset();
+            this.box2d.clear();
         }
 
         if (this.matter)
