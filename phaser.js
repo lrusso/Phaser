@@ -38309,8 +38309,8 @@ Phaser.Pointer.prototype = {
                 //  Flag it as checked so we don't re-scan it on the next phase
                 currentNode.checked = true;
 
-                if ((fromClick && currentNode.checkPointerDown(this, true)) ||
-                    (!fromClick && currentNode.checkPointerOver(this, true)))
+                if ((currentNode.checkPointerDown(this, true)) ||
+                    (currentNode.checkPointerOver(this, true)))
                 {
                     highestRenderOrderID = currentNode.sprite.renderOrderID;
                     highestInputPriorityID = currentNode.priorityID;
