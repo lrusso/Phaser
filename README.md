@@ -1,6 +1,6 @@
 # Phaser 2.4.4 patched
 
-This patched contains the following fixes:
+This version contains the following bugfixes:
 
 * Bugfix when trying tapping using some trackpads.
 
