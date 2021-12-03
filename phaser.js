@@ -22685,7 +22685,7 @@ var Phaser = Phaser || {
     * @constant
     * @type {string}
     */
-    VERSION: '2.4.4-LRusso',
+    VERSION: '2.4.4-LRusso-1.1',
 
     /**
     * An array of Phaser game instances.
@@ -30983,32 +30983,33 @@ Phaser.Stage.prototype.checkVisibility = function () {
 */
 Phaser.Stage.prototype.visibilityChange = function (event) {
 
-    if (event.type === 'pagehide' || event.type === 'blur' || event.type === 'pageshow' || event.type === 'focus')
-    {
-        if (event.type === 'pagehide' || event.type === 'blur')
-        {
-            this.game.focusLoss(event);
-        }
-        else if (event.type === 'pageshow' || event.type === 'focus')
-        {
-            this.game.focusGain(event);
-        }
-
-        return;
-    }
-
     if (this.disableVisibilityChange)
     {
         return;
     }
 
-    if (document.hidden || document.mozHidden || document.msHidden || document.webkitHidden || event.type === "pause")
+    // checking if it is a mobile device
+    if (!!(navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i))==true)
     {
+        if (document.hidden==true)
+        {
         this.game.gamePaused(event);
+        }
+        else
+        {
+        this.game.gameResumed(event);
+        }
     }
     else
     {
+        if(document.hasFocus()==true)
+        {
         this.game.gameResumed(event);
+        }
+        else
+        {
+        this.game.gamePaused(event);
+        }
     }
 
 };
